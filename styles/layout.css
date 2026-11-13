@@ -104,7 +104,14 @@
   font-size: 0.875rem;
   font-weight: 600;
   color: var(--muted);
+  cursor: pointer;
+  user-select: none;
   transition: all var(--duration-fast) var(--ease-standard);
+}
+
+.step-item:hover {
+  border-color: var(--brand);
+  color: var(--text);
 }
 
 .step-item.active {
@@ -144,16 +151,26 @@
 
 /* Main Container & Two-column layout on PC */
 .main-wrapper {
-  max-width: 1240px;
+  max-width: 1360px;
   margin: 0 auto;
-  padding: 0 20px 80px;
+  padding: 0 24px 80px;
+}
+
+.step-section {
+  scroll-margin-top: 140px;
+}
+
+@media (max-width: 1023px) {
+  .step-section {
+    scroll-margin-top: 80px;
+  }
 }
 
 @media (min-width: 1024px) {
   .main-layout {
     display: grid;
     grid-template-columns: minmax(0, 1fr) 360px;
-    gap: 40px;
+    gap: 36px;
     align-items: start;
   }
 }

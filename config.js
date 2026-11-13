@@ -5,7 +5,7 @@ export const CONFIG = {
   version: "1.0.0",
 
   // The live address, no slash at the end. Set in Phase 4 (deploy). Used for share links and link previews.
-  siteUrl: "",
+  siteUrl: "https://website-price-three.vercel.app",
 
   // Sales WhatsApp: digits only, country code first, 11 to 15 digits. Empty hides the "Talk to us" button.
   salesWhatsApp: "",

@@ -93,12 +93,6 @@ export function loadInitialState() {
     return { pick: hashPick, fromHash: true };
   }
 
-  // 2. Saved pick second
-  const saved = getSavedPick();
-  if (saved && saved.type) {
-    return { pick: saved, fromHash: false };
-  }
-
-  // 3. Fresh pick
+  // 2. Fresh pick on reload (per user request: no old data on refresh)
   return { pick: emptyPick(), fromHash: false };
 }

@@ -24,7 +24,10 @@ function renderAll(options = {}) {
 
   renderReceiptUI(document.getElementById("receipt-container"), state.pick, state.quote, {
     onShare: () => document.getElementById("share")?.scrollIntoView({ behavior: "smooth" }),
-    onEdit: () => document.getElementById("step-2")?.scrollIntoView({ behavior: "smooth" }),
+    onEdit: () => {
+      window.history.pushState({ step: 2 }, "", "#step-2");
+      document.getElementById("step-2")?.scrollIntoView({ behavior: "smooth" });
+    },
     onRestart: handleRestart
   });
 
@@ -52,6 +55,7 @@ function handleSelectType(typeId) {
   state.pick = res.pick;
   savePick(state.pick);
   renderAll({ immediate: false });
+  window.history.pushState({ step: 2 }, "", "#step-2");
   document.getElementById("step-2")?.scrollIntoView({ behavior: "smooth" });
 }
 
@@ -110,6 +114,7 @@ function handleShowReceipt() {
   abortSample();
   setReceiptVisible(true);
   renderAll({ immediate: false });
+  window.history.pushState({ step: 3 }, "", "#step-3");
   document.getElementById("step-3")?.scrollIntoView({ behavior: "smooth" });
 }
 
@@ -118,6 +123,7 @@ function handleRestart() {
   clearPick();
   setReceiptVisible(false);
   renderAll({ immediate: true });
+  window.history.pushState({ step: 1 }, "", window.location.pathname);
   document.getElementById("step-1")?.scrollIntoView({ behavior: "smooth" });
 }
 
@@ -150,6 +156,7 @@ function runSample() {
       document.getElementById("hero-sample-btn")?.removeAttribute("aria-disabled");
       setReceiptVisible(true);
       renderAll({ immediate: false });
+      window.history.pushState({ step: 3 }, "", "#step-3");
       (document.querySelector(".receipt-end-box") || document.getElementById("step-3"))?.scrollIntoView({ behavior: "smooth" });
     }
   }
@@ -176,6 +183,9 @@ function init() {
   state.pick = initial.pick;
   state.fromHash = initial.fromHash;
   if (state.fromHash && state.pick?.type) setReceiptVisible(true);
+  if (!window.history.state) {
+    window.history.replaceState({ step: state.fromHash ? 3 : 1 }, "", window.location.href);
+  }
 
   initTheme();
   const home = document.getElementById("header-home-link");
@@ -187,17 +197,48 @@ function init() {
   const ghost = document.getElementById("meter-ghost-digits");
   if (ghost) ghost.textContent = formatINR(888888);
 
+  const startBtn = document.getElementById("hero-start-btn");
+  if (startBtn) {
+    startBtn.addEventListener("click", () => {
+      abortSample();
+      handleRestart();
+    });
+  }
+
   initTypesUI(document.getElementById("types-grid"), handleSelectType);
   initFeaturesUI(document.getElementById("features-container"), {
     onToggle: handleToggleFeature,
     onCount: handleCountFeature,
     onNext: handleShowReceipt,
-    onBack: () => document.getElementById("step-1")?.scrollIntoView({ behavior: "smooth" })
+    onBack: () => {
+      window.history.pushState({ step: 1 }, "", "#step-1");
+      document.getElementById("step-1")?.scrollIntoView({ behavior: "smooth" });
+    }
   });
   initMeterUI({ onTier: handleTier, onGetPriceTag: handleShowReceipt });
   initShareUI(document.getElementById("share-container"));
   initDSAUI(document.getElementById("dsa-grid"));
   initSourcesUI(document.getElementById("sources-container"));
+
+  document.getElementById("step-pill-1")?.addEventListener("click", () => {
+    abortSample();
+    window.history.pushState({ step: 1 }, "", "#step-1");
+    document.getElementById("step-1")?.scrollIntoView({ behavior: "smooth" });
+  });
+  document.getElementById("step-pill-2")?.addEventListener("click", () => {
+    if (state.pick?.type) {
+      abortSample();
+      window.history.pushState({ step: 2 }, "", "#step-2");
+      document.getElementById("step-2")?.scrollIntoView({ behavior: "smooth" });
+    }
+  });
+  document.getElementById("step-pill-3")?.addEventListener("click", () => {
+    if (isReceiptVisible()) {
+      abortSample();
+      window.history.pushState({ step: 3 }, "", "#step-3");
+      document.getElementById("step-3")?.scrollIntoView({ behavior: "smooth" });
+    }
+  });
 
   const sampleBtn = document.getElementById("hero-sample-btn");
   if (sampleBtn) {
@@ -223,6 +264,19 @@ function init() {
   window.addEventListener("pointerdown", (e) => {
     if (state.sampleRunning && !e.target.closest("#hero-sample-btn")) abortSample();
   }, { passive: true });
+
+  window.addEventListener("popstate", (e) => {
+    const step = e.state?.step || 1;
+    if (step === 3) {
+      setReceiptVisible(true);
+      renderAll({ immediate: true });
+      document.getElementById("step-3")?.scrollIntoView({ behavior: "smooth" });
+    } else if (step === 2) {
+      document.getElementById("step-2")?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      document.getElementById("step-1")?.scrollIntoView({ behavior: "smooth" });
+    }
+  });
 }
 
 if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
