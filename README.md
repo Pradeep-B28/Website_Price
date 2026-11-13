@@ -19,21 +19,21 @@ The project connects commercial market pricing directly to software engineering 
 
 ```mermaid
 flowchart TD
-    subgraph Client Viewport
-        TypesUI["Step 1: 15 Website Types\n(Full-width horizontal rows)"]
-        FeaturesUI["Step 2: 21 Features in 5 Groups\n(Switches & Unit Steppers)"]
-        TierUI["Agency Tier Selector\n(Small · Mid-size · Established)"]
+    subgraph ClientViewport["Client Viewport"]
+        TypesUI["Step 1: 15 Website Types<br/>(Full-width horizontal rows)"]
+        FeaturesUI["Step 2: 21 Features in 5 Groups<br/>(Switches & Unit Steppers)"]
+        TierUI["Agency Tier Selector<br/>(Small · Mid-size · Established)"]
     end
 
-    TypesUI -->|State Change| Engine["Core Pricing Engine (js/engine/pricing.js)\nO(1) Map Lookups · O(N) Running Sum"]
+    TypesUI -->|State Change| Engine["Core Pricing Engine (js/engine/pricing.js)<br/>O(1) Map Lookups · O(N) Running Sum"]
     FeaturesUI -->|Toggle / Count| Engine
     TierUI -->|Tier Selection| Engine
 
-    subgraph Real-Time Display & Feedback
-        Meter["Taxi Fare Meter (Desktop sticky / Mobile sheet)\n28ms Digit Ticking · Amber Flag · Flying Chips"]
-        Receipt["Step 3: Itemised Receipt\nO(K log K) byCost Sorting · Zig-zag Edge"]
-        DSA["DSA Explainer Cards\nHash Map · Running Sum · Sort · Set"]
-        Skills["Skills Deduplication\nO(S) Set Accumulator (10+ Skills)"]
+    subgraph DisplayFeedback["Real-Time Display & Feedback"]
+        Meter["Taxi Fare Meter (Desktop sticky / Mobile sheet)<br/>28ms Digit Ticking · Amber Flag · Flying Chips"]
+        Receipt["Step 3: Itemised Receipt<br/>O(K log K) byCost Sorting · Zig-zag Edge"]
+        DSA["DSA Explainer Cards<br/>Hash Map · Running Sum · Sort · Set"]
+        Skills["Skills Deduplication<br/>O(S) Set Accumulator (10+ Skills)"]
     end
 
     Engine --> Meter
@@ -41,14 +41,14 @@ flowchart TD
     Engine --> DSA
     Engine --> Skills
 
-    subgraph Persistence & Networking
-        Hash["URL Hash Serializer (#t=...&f=...)\n1-Tap WhatsApp Share & State Restore"]
-        Storage["Web Storage API\nTheme: localStorage · Boot: sessionStorage"]
-        CSP["Strict Content Security Policy\nconnect-src 'none' (100% Offline Capable)"]
+    subgraph PersistenceSecurity["Persistence & Security"]
+        Hash["URL Hash Serializer (#t=...&f=...)<br/>1-Tap WhatsApp Share & State Restore"]
+        Storage["Web Storage API<br/>Theme: localStorage · Boot: sessionStorage"]
+        CSP["Strict Content Security Policy<br/>connect-src 'none' (100% Offline Capable)"]
     end
 
     Engine -.-> Hash
-    Storage -.-> Client Viewport
+    Storage -.-> TypesUI
 ```
 
 ---
