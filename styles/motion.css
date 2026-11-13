@@ -223,6 +223,11 @@
               transform 400ms var(--ease-standard);
 }
 
+#step-1 {
+  opacity: 1;
+  transform: none;
+}
+
 .step-section.is-revealed {
   opacity: 1;
   transform: translateY(0);
