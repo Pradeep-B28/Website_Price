@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none';">
+
+  <title>The Website Price Tag | Wrench Wise</title>
+  <meta name="description" content="Pick the features of your dream website and watch a taxi-style meter show what an agency in India would likely charge. Then learn to build it yourself.">
+  <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0F172A" media="(prefers-color-scheme: dark)">
+
+  <!-- Open Graph / Link Previews -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="What would your dream website cost?">
+  <meta property="og:description" content="Pick the features. Watch the meter. Then learn to build it yourself.">
+  <meta property="og:image" content="assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="What would your dream website cost?">
+  <meta name="twitter:description" content="Pick the features. Watch the meter. Then learn to build it yourself.">
+  <meta name="twitter:image" content="assets/og-image.png">
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+
+  <link rel="stylesheet" href="styles/tokens.css">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/layout.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <link rel="stylesheet" href="styles/motion.css">
+
+  <script src="js/theme-init.js"></script>
+</head>
+<body>
+  <!-- Inline SVG Sprite for Icons -->
+  <svg class="sr-only" aria-hidden="true">
+    <defs>
+      <symbol id="i-landing" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 4h16v16H4z"/><path d="M4 9h16"/><path d="M9 14l3 3 5-5"/>
+      </symbol>
+      <symbol id="i-portfolio" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="7" r="4"/><path d="M5 21v-2a7 7 0 0114 0v2"/>
+      </symbol>
+      <symbol id="i-event" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M12 14l1.5 2.5L16 14"/>
+      </symbol>
+      <symbol id="i-business" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 21h18M5 21V7l8-4v18M13 11h6v10M9 9v.01M9 13v.01M9 17v.01"/>
+      </symbol>
+      <symbol id="i-restaurant" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 8v13M14 8v13M14 8a2 2 0 014 0M6 3v18M4 3h4v5a2 2 0 01-4 0V3z"/>
+      </symbol>
+      <symbol id="i-school" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12.5V17c0 3 6 4 6 4s6-1 6-4v-4.5"/><path d="M22 10v6"/>
+      </symbol>
+      <symbol id="i-blog" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 20h9M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/>
+      </symbol>
+      <symbol id="i-bookingSite" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><circle cx="12" cy="15" r="2"/>
+      </symbol>
+      <symbol id="i-store" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="9" cy="20" r="1"/><circle cx="20" cy="20" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/>
+      </symbol>
+      <symbol id="i-property" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path d="M9 22V12h6v10"/>
+      </symbol>
+      <symbol id="i-news" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 4h16v16H4zM4 9h16M8 14h8M8 17h5"/>
+      </symbol>
+      <symbol id="i-courses" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4M10 8l5 2.5-5 2.5V8z"/>
+      </symbol>
+      <symbol id="i-saas" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9M15 13h2M15 17h2"/>
+      </symbol>
+      <symbol id="i-marketplace" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 6l3-3h12l3 3v2a3 3 0 01-6 0 3 3 0 01-6 0 3 3 0 01-6 0V6z"/><path d="M4 11v9a1 1 0 001 1h14a1 1 0 001-1v-9"/>
+      </symbol>
+      <symbol id="i-community" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+      </symbol>
+      <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 6L9 17l-5-5"/>
+      </symbol>
+      <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/>
+      </symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 5v14M5 12h14"/>
+      </symbol>
+      <symbol id="i-minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12h14"/>
+      </symbol>
+      <symbol id="i-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 9l6 6 6-6"/>
+      </symbol>
+      <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 6L6 18M6 6l12 12"/>
+      </symbol>
+      <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+      </symbol>
+      <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+      </symbol>
+      <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/>
+      </symbol>
+      <symbol id="i-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/>
+      </symbol>
+      <symbol id="i-refresh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M23 4v6h-6M1 20v-6h6M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- Accessible Skip Link -->
+  <a href="#meter-section" class="skip-link">Skip to the meter</a>
+
+  <!-- 6A. Loader (First visit in a session only) -->
+  <div id="loader-overlay" class="loader-overlay" aria-hidden="true">
+    <div id="loader-card" class="loader-card">
+      <div class="loader-header">
+        <span class="loader-status-label">Starting the meter</span>
+        <span class="loader-flag">FOR HIRE</span>
+      </div>
+      <div class="loader-display">
+        <div class="loader-ghost">888888</div>
+        <div class="loader-digits">
+          <span>₹</span><span id="loader-digits">0</span>
+        </div>
+      </div>
+      <div class="loader-progress-bar">
+        <div id="loader-progress-fill" class="loader-progress-fill"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6B. Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a id="header-home-link" href="https://wrench-wise.com" class="brand-link" aria-label="Wrench Wise home">
+        <img src="assets/logo.png" alt="Wrench Wise" class="brand-logo" width="160" height="36">
+      </a>
+      <div class="header-actions">
+        <button id="theme-toggle-btn" class="btn-icon theme-toggle-btn" aria-label="Switch to dark theme">
+          <svg class="icon-moon" width="20" height="20"><use href="#i-moon"></use></svg>
+          <svg class="icon-sun" width="20" height="20"><use href="#i-sun"></use></svg>
+        </button>
+        <a id="header-programs-btn" href="https://wrench-wise.com" class="btn btn-pill">
+          Explore programs
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 6D. Stepper (Sticky on PC) -->
+  <nav class="stepper-nav" aria-label="Progress">
+    <div class="stepper-inner">
+      <div class="stepper-line" aria-hidden="true">
+        <div id="stepper-line-fill" class="stepper-line-fill"></div>
+      </div>
+      <div id="step-pill-1" class="step-item active">
+        <span class="step-badge">1</span>
+        <span>Pick a type</span>
+      </div>
+      <div id="step-pill-2" class="step-item">
+        <span class="step-badge">2</span>
+        <span>Add features</span>
+      </div>
+      <div id="step-pill-3" class="step-item">
+        <span class="step-badge">3</span>
+        <span>Your price tag</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="main-wrapper">
+    <!-- 6C. Hero Section -->
+    <section class="hero-section">
+      <div class="hero-eyebrow">A free tool by Wrench Wise</div>
+      <h1 class="hero-title">What would your dream website cost?</h1>
+      <p class="hero-body">
+        Pick the kind of website and the features you want. A taxi-style meter shows what an agency in India would likely charge to build it.
+      </p>
+      <div class="hero-actions">
+        <a href="#step-1" class="btn btn-primary">Start the meter</a>
+        <button id="hero-sample-btn" class="btn btn-secondary">Try a sample</button>
+      </div>
+      <div class="hero-note">Estimates from published 2026 price guides for India.</div>
+    </section>
+
+    <!-- Two-column Grid on PC -->
+    <div class="main-layout">
+      <!-- Left Column: Steps & Content -->
+      <div class="main-column">
+        <!-- 6E. Step 1: Types -->
+        <section id="step-1" class="step-section">
+          <div class="section-header">
+            <h2 class="section-title">What kind of website?</h2>
+            <p class="section-desc">Pick the one closest to your idea. You can change it later.</p>
+          </div>
+          <div id="types-grid" class="card-grid-placeholder">
+            <div class="empty-card">Website types loading...</div>
+          </div>
+        </section>
+
+        <!-- 6F. Step 2: Features -->
+        <section id="step-2" class="step-section">
+          <div class="section-header">
+            <h2 class="section-title">What should it do?</h2>
+            <p class="section-desc">Switch on what you need and watch the meter.</p>
+          </div>
+          <div id="features-container">
+            <div class="empty-card">Pick a website type first.</div>
+          </div>
+        </section>
+
+        <!-- 6H & 6I. Step 3: Your price tag -->
+        <section id="step-3" class="step-section">
+          <div class="section-header">
+            <h2 class="section-title">Your price tag</h2>
+            <p class="section-desc">A detailed estimate breakdown for your website build.</p>
+          </div>
+          <div id="receipt-container">
+            <div class="empty-card">Complete your picks to print your price tag.</div>
+          </div>
+        </section>
+
+        <!-- 6K. How it works -->
+        <section id="how-it-works" class="step-section">
+          <div class="section-header">
+            <h2 class="section-title">How the meter works</h2>
+            <p class="section-desc">Four ideas from data structures and algorithms run this page.</p>
+          </div>
+          <div id="dsa-grid" class="card-grid-placeholder">
+            <div class="empty-card">Pick a website type to see your own numbers here.</div>
+          </div>
+        </section>
+
+        <!-- 6L. Sources -->
+        <section id="sources" class="step-section">
+          <div class="section-header">
+            <h2 class="section-title">Where the prices come from</h2>
+            <p class="section-desc">
+              Each range comes from a published 2026 price guide for India. Where a guide does not price a feature on its own, we estimated it from the gap between the guide's price tiers. Prices do not include GST.
+            </p>
+          </div>
+          <div id="sources-container">
+            <div class="empty-card">Sources loading...</div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Right Column: Sticky Meter Panel (PC 1024px and up) -->
+      <aside id="meter-section" class="meter-column" aria-label="Taxi meter">
+        <div class="meter-card">
+          <div class="meter-header">
+            <span class="meter-label">Estimated fare</span>
+            <span id="meter-flag" class="meter-flag">FOR HIRE</span>
+          </div>
+
+          <div class="meter-display">
+            <div id="meter-ghost-digits" class="meter-ghost-digits" aria-hidden="true"></div>
+            <div class="meter-live-digits">
+              <span class="meter-currency">₹</span><span id="meter-digits">0</span>
+            </div>
+          </div>
+
+          <div id="meter-range" class="meter-range-line">
+            Pick a website type to start the meter.
+          </div>
+          <div id="meter-weeks" class="meter-weeks-line"></div>
+
+          <div class="meter-summary-row">
+            <span>Base fare</span>
+            <span id="meter-base-name">None</span>
+          </div>
+          <div class="meter-summary-row">
+            <span>Extras</span>
+            <span id="meter-extras-count">None yet</span>
+          </div>
+
+          <div class="meter-tier-select">
+            <div class="meter-tier-label">Who builds it?</div>
+            <div class="meter-tier-pill-switch" role="radiogroup" aria-label="Who builds it?">
+              <button class="tier-opt-btn" role="radio" aria-checked="false" data-tier="small">Small studio</button>
+              <button class="tier-opt-btn active" role="radio" aria-checked="true" data-tier="mid">Mid-size</button>
+              <button class="tier-opt-btn" role="radio" aria-checked="false" data-tier="large">Established</button>
+            </div>
+          </div>
+
+          <a href="#step-3" id="meter-cta-btn" class="btn btn-primary meter-cta-btn">
+            Get my price tag
+          </a>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- 6G. Phone bottom meter bar (below 1024px) -->
+  <div id="phone-meter-bar" class="phone-meter-bar" aria-label="Mobile meter">
+    <div class="meter-flag">FOR HIRE</div>
+    <div class="meter-live-digits">
+      <span class="meter-currency">₹</span><span id="phone-meter-digits">0</span>
+    </div>
+    <button id="phone-meter-open-btn" class="btn btn-secondary">Show details</button>
+  </div>
+
+  <!-- 6M. Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <img src="assets/logo.png" alt="Wrench Wise" class="brand-logo" width="140" height="32">
+      <div class="footer-links">
+        <a id="footer-home-link" href="https://wrench-wise.com">Built by Wrench Wise</a>
+      </div>
+      <div class="footer-privacy">Your picks stay on your device.</div>
+    </div>
+  </footer>
+
+  <noscript>
+    <div class="empty-card">This page needs JavaScript to run.</div>
+  </noscript>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

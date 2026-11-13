@@ -1,0 +1,238 @@
+/* Page layout, header, footer, sticky meter and responsive grid */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 3px solid transparent;
+  border-image: var(--brand-grad) 1;
+  transition: background-color var(--duration-normal) var(--ease-standard);
+}
+
+[data-theme="dark"] .site-header {
+  background: rgba(15, 23, 42, 0.85);
+}
+
+.header-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+}
+
+.brand-logo {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Stepper */
+.stepper-nav {
+  position: relative;
+  z-index: 90;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 20px;
+  margin-bottom: 32px;
+  transition: background-color var(--duration-normal) var(--ease-standard);
+}
+
+@media (min-width: 1024px) {
+  .stepper-nav {
+    position: sticky;
+    top: 67px;
+  }
+}
+
+.stepper-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.stepper-line {
+  position: absolute;
+  top: 50%;
+  left: 36px;
+  right: 36px;
+  height: 3px;
+  background: var(--surface-2);
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.stepper-line-fill {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: var(--brand-grad);
+  transition: width var(--duration-normal) var(--ease-standard);
+}
+
+.step-item {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--surface);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--muted);
+  transition: all var(--duration-fast) var(--ease-standard);
+}
+
+.step-item.active {
+  color: var(--brand-strong);
+  border-color: var(--brand);
+  background: var(--brand-soft);
+}
+
+.step-item.done {
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.step-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--surface-2);
+  color: var(--text-2);
+  font-size: 0.75rem;
+  font-weight: 700;
+  transition: all var(--duration-fast) var(--ease-spring);
+}
+
+.step-item.active .step-badge {
+  background: var(--brand);
+  color: #FFFFFF;
+}
+
+.step-item.done .step-badge {
+  background: var(--brand-strong);
+  color: #FFFFFF;
+}
+
+/* Main Container & Two-column layout on PC */
+.main-wrapper {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 20px 80px;
+}
+
+@media (min-width: 1024px) {
+  .main-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 360px;
+    gap: 40px;
+    align-items: start;
+  }
+}
+
+.main-column {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.meter-column {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .meter-column {
+    display: block;
+    position: sticky;
+    top: 88px;
+    z-index: 80;
+  }
+}
+
+/* Phone bottom meter bar */
+.phone-meter-bar {
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  .phone-meter-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 150;
+    height: 72px;
+    padding: 0 20px calc(env(safe-area-inset-bottom, 0px));
+    background: var(--meter-bg);
+    border-top: 1px solid var(--meter-edge);
+    box-shadow: var(--shadow-meter);
+  }
+
+  body {
+    padding-bottom: calc(88px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+  padding: 48px 20px calc(48px + env(safe-area-inset-bottom, 0px));
+  margin-top: 64px;
+}
+
+.footer-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 16px;
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.footer-privacy {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
