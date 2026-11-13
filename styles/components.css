@@ -202,6 +202,11 @@
   gap: 20px;
 }
 
+#types-grid,
+#dsa-grid {
+  width: 100%;
+}
+
 .empty-card {
   background: var(--surface);
   border: 1px dashed var(--border);
@@ -213,23 +218,10 @@
 
 /* 6E. Types Grid */
 .types-cards-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 16px;
-}
-
-@media (min-width: 600px) {
-  .types-cards-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 20px;
-  }
-}
-
-@media (min-width: 1400px) {
-  .types-cards-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 24px;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
 }
 
 .type-card {
@@ -237,29 +229,35 @@
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-card);
-  padding: 24px;
+  padding: 14px 20px;
   text-align: left;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 36px 1fr auto 28px;
+  grid-template-areas:
+    "icon name meta badge"
+    "icon desc meta badge";
+  align-items: center;
+  column-gap: 16px;
+  row-gap: 2px;
   box-shadow: var(--shadow-sm);
   transition: transform var(--duration-fast) var(--ease-spring),
               box-shadow var(--duration-fast) var(--ease-standard),
               border-color var(--duration-fast) var(--ease-standard),
               background-color var(--duration-fast) var(--ease-standard);
-  min-height: 230px;
+  min-height: 72px;
   width: 100%;
+  cursor: pointer;
 }
 
 @media (hover: hover) {
   .type-card:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
     border-color: var(--brand);
   }
 
   .type-card:hover .type-icon {
-    transform: rotate(6deg);
+    transform: scale(1.08);
   }
 }
 
@@ -269,64 +267,70 @@
 }
 
 .type-check-badge {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  width: 26px;
-  height: 26px;
+  grid-area: badge;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
-  background: var(--brand);
-  color: #FFFFFF;
+  border: 2px solid var(--border);
+  background: var(--surface);
+  color: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0;
-  transform: scale(0);
   transition: all var(--duration-fast) var(--ease-spring);
+  justify-self: center;
+  align-self: center;
 }
 
 .type-card.is-selected .type-check-badge {
-  opacity: 1;
-  transform: scale(1);
+  border-color: var(--brand);
+  background: var(--brand);
+  color: #FFFFFF;
 }
 
 .type-card-top {
+  grid-area: icon;
   display: flex;
   align-items: center;
-  margin-bottom: 12px;
+  justify-content: center;
+  margin-bottom: 0;
 }
 
 .type-icon {
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   color: var(--brand);
   transition: transform var(--duration-fast) var(--ease-spring);
 }
 
 .type-name {
+  grid-area: name;
   font-weight: 800;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   line-height: 1.3;
-  margin-bottom: 8px;
+  margin-bottom: 0;
   color: var(--text);
 }
 
 .type-desc {
-  font-size: 0.9rem;
-  line-height: 1.5;
+  grid-area: desc;
+  font-size: 0.85rem;
+  line-height: 1.4;
   color: var(--muted);
-  margin-bottom: 16px;
-  flex-grow: 1;
+  margin-bottom: 0;
 }
 
 .type-meta {
+  grid-area: meta;
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  border-top: 1px solid var(--border);
-  padding-top: 14px;
-  font-size: 0.85rem;
-  margin-top: auto;
+  align-items: flex-end;
+  text-align: right;
+  gap: 2px;
+  border-top: none;
+  padding-top: 0;
+  margin-top: 0;
+  white-space: nowrap;
 }
 
 .type-range {
@@ -336,7 +340,33 @@
 }
 
 .type-weeks, .type-pages {
+  font-size: 0.775rem;
   color: var(--muted);
+  line-height: 1.3;
+}
+
+@media (max-width: 640px) {
+  .type-card {
+    grid-template-columns: 32px 1fr auto;
+    grid-template-areas:
+      "icon name  badge"
+      "icon desc  desc"
+      "meta meta  meta";
+    padding: 14px 16px;
+    row-gap: 6px;
+  }
+
+  .type-meta {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border);
+    padding-top: 8px;
+    margin-top: 4px;
+    text-align: left;
+    white-space: normal;
+  }
 }
 
 /* Phone 8+ cards toggle */
@@ -346,18 +376,18 @@
   }
 
   .types-cards-grid.show-all .type-card-extra {
-    display: flex;
+    display: grid;
   }
+}
 
-  .types-toggle-row {
-    display: flex;
-    justify-content: center;
-    margin-top: 16px;
-  }
+.types-toggle-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+}
 
-  .types-toggle-row.is-hidden {
-    display: none;
-  }
+.types-toggle-row.is-hidden {
+  display: none;
 }
 
 @media (min-width: 600px) {
@@ -760,7 +790,7 @@
   position: fixed;
   inset: auto 0 0 0;
   width: 100%;
-  max-width: 540px;
+  max-width: 640px;
   margin: 0 auto;
   border-radius: 24px 24px 0 0;
   background: var(--meter-bg);
@@ -1182,46 +1212,83 @@
 
 /* 6K. DSA Cards */
 .dsa-cards-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 16px;
-}
-
-@media (min-width: 600px) {
-  .dsa-cards-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
 }
 
 .dsa-card {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    "title live"
+    "desc  live";
+  column-gap: 20px;
+  row-gap: 2px;
+  align-items: center;
+  padding: 16px 20px;
+  width: 100%;
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--duration-fast) var(--ease-spring),
+              box-shadow var(--duration-fast) var(--ease-standard);
+  min-height: 68px;
+}
+
+@media (hover: hover) {
+  .dsa-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
 }
 
 .dsa-card-title {
-  font-size: 1.1rem;
-  margin-bottom: 6px;
+  grid-area: title;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 0;
 }
 
 .dsa-card-desc {
-  font-size: 0.875rem;
+  grid-area: desc;
+  font-size: 0.85rem;
   color: var(--muted);
-  line-height: 1.5;
-  margin-bottom: 16px;
-  flex-grow: 1;
+  line-height: 1.4;
+  margin-bottom: 0;
 }
 
 .dsa-card-live {
+  grid-area: live;
   font-size: 0.85rem;
   font-weight: 700;
   color: var(--brand-strong);
-  padding: 8px 12px;
+  padding: 6px 14px;
   background: var(--brand-soft);
-  border-radius: var(--radius-sm);
-  line-height: 1.4;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  align-self: center;
 }
 
-/* 6L. Sources */
+@media (max-width: 640px) {
+  .dsa-card {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "title"
+      "desc"
+      "live";
+    row-gap: 8px;
+    padding: 14px 16px;
+  }
+
+  .dsa-card-live {
+    align-self: flex-start;
+  }
+}
+
 .sources-card {
   margin-top: 24px;
 }

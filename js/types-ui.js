@@ -16,6 +16,7 @@ export function createIcon(name, className = "") {
 
 export function initTypesUI(container, onSelect) {
   if (!container) return;
+  container.classList.remove("card-grid-placeholder");
   while (container.firstChild) container.removeChild(container.firstChild);
 
   const grid = document.createElement("div");

@@ -12,6 +12,7 @@ function el(tag, className, text) {
 
 export function initDSAUI(container) {
   if (!container || !CONFIG.features?.howItWorks) return;
+  container.classList.remove("card-grid-placeholder");
   while (container.firstChild) container.removeChild(container.firstChild);
 
   const grid = el("div", "dsa-cards-grid");
