@@ -214,3 +214,24 @@
   opacity: 1;
   transition: opacity var(--duration-normal) var(--ease-standard);
 }
+
+/* Scroll Reveal Animations */
+.step-section {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 400ms var(--ease-standard),
+              transform 400ms var(--ease-standard);
+}
+
+.step-section.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .step-section {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
