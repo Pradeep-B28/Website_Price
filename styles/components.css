@@ -1324,3 +1324,102 @@
   font-weight: 700;
   text-align: center;
 }
+
+/* Self-test Overlay Styles */
+.selftest-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.selftest-card {
+  max-width: 760px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 28px;
+  box-shadow: var(--shadow-lg);
+}
+
+.selftest-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.selftest-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.selftest-status-pass {
+  color: #10B981;
+  font-weight: 800;
+  font-family: var(--font-mono);
+}
+
+.selftest-status-fail {
+  color: #EF4444;
+  font-weight: 800;
+  font-family: var(--font-mono);
+}
+
+.selftest-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.selftest-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+}
+
+.selftest-pass {
+  background: rgba(16, 185, 129, 0.08);
+}
+
+.selftest-fail {
+  background: rgba(239, 68, 68, 0.08);
+}
+
+.selftest-badge {
+  font-weight: 800;
+  font-family: var(--font-mono);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+.selftest-pass .selftest-badge {
+  background: #10B981;
+  color: #FFFFFF;
+}
+
+.selftest-fail .selftest-badge {
+  background: #EF4444;
+  color: #FFFFFF;
+}
+
+.selftest-close-btn {
+  width: 100%;
+}

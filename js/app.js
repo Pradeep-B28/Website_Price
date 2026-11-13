@@ -207,10 +207,18 @@ function init() {
 
   renderAll({ immediate: Boolean(state.pick?.type) });
 
-  initLoader(() => {
+  const isTest = window.location.search.includes("test=1");
+  if (isTest) {
+    const overlay = document.getElementById("loader-overlay");
+    if (overlay) overlay.classList.add("is-hidden");
     document.body.classList.add("page-loaded");
-    initScrollReveal();
-  });
+    import("./selftest.js").then((mod) => mod.runSelfTests());
+  } else {
+    initLoader(() => {
+      document.body.classList.add("page-loaded");
+      initScrollReveal();
+    });
+  }
 
   window.addEventListener("pointerdown", (e) => {
     if (state.sampleRunning && !e.target.closest("#hero-sample-btn")) abortSample();
