@@ -211,7 +211,382 @@
   color: var(--muted);
 }
 
-/* Meter Card */
+/* 6E. Types Grid */
+.types-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 600px) {
+  .types-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .types-cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+}
+
+.type-card {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 20px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--duration-fast) var(--ease-spring),
+              box-shadow var(--duration-fast) var(--ease-standard),
+              border-color var(--duration-fast) var(--ease-standard),
+              background-color var(--duration-fast) var(--ease-standard);
+  min-height: 180px;
+}
+
+@media (hover: hover) {
+  .type-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--brand);
+  }
+
+  .type-card:hover .type-icon {
+    transform: rotate(6deg);
+  }
+}
+
+.type-card.is-selected {
+  background: var(--brand-soft);
+  border-color: var(--brand);
+}
+
+.type-check-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--brand);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: scale(0);
+  transition: all var(--duration-fast) var(--ease-spring);
+}
+
+.type-card.is-selected .type-check-badge {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.type-card-top {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.type-icon {
+  width: 28px;
+  height: 28px;
+  color: var(--brand);
+  transition: transform var(--duration-fast) var(--ease-spring);
+}
+
+.type-name {
+  font-weight: 800;
+  font-size: 1.05rem;
+  line-height: 1.3;
+  margin-bottom: 6px;
+  color: var(--text);
+}
+
+.type-desc {
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: var(--muted);
+  margin-bottom: 16px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex-grow: 1;
+}
+
+.type-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+  font-size: 0.8rem;
+}
+
+.type-range {
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: var(--brand-strong);
+}
+
+.type-weeks, .type-pages {
+  color: var(--muted);
+}
+
+/* Phone 8+ cards toggle */
+@media (max-width: 599px) {
+  .type-card-extra {
+    display: none;
+  }
+
+  .types-cards-grid.show-all .type-card-extra {
+    display: flex;
+  }
+
+  .types-toggle-row {
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+  }
+
+  .types-toggle-row.is-hidden {
+    display: none;
+  }
+}
+
+@media (min-width: 600px) {
+  .types-toggle-row {
+    display: none;
+  }
+}
+
+/* 6F. Features UI */
+.features-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  transition: opacity var(--duration-normal) var(--ease-standard);
+}
+
+.features-wrapper.is-dimmed {
+  opacity: 0.5;
+}
+
+.group-card {
+  padding: 24px;
+}
+
+.group-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.feature-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  transition: background-color var(--duration-fast) var(--ease-standard);
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  .feature-row:hover {
+    background-color: var(--surface-2);
+  }
+
+  .feature-row:hover .chip-price {
+    background: var(--brand-soft);
+    color: var(--brand-strong);
+    border-color: var(--brand);
+  }
+}
+
+.feature-row.is-included {
+  cursor: default;
+}
+
+.feature-info {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.feature-title-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.feature-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.feature-desc {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+/* Chips */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 2px 10px;
+  border-radius: var(--radius-full);
+  line-height: 1.4;
+}
+
+.chip-price {
+  background: var(--surface-2);
+  color: var(--muted);
+  border: 1px solid var(--border);
+}
+
+.chip-included {
+  background: var(--brand-soft);
+  color: var(--brand-strong);
+  border: 1px solid var(--brand);
+}
+
+.icon-lock-inline {
+  width: 14px;
+  height: 14px;
+}
+
+/* Switch */
+.switch-btn {
+  width: 48px;
+  height: 28px;
+  min-width: 48px;
+  border-radius: var(--radius-full);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  position: relative;
+  cursor: pointer;
+  padding: 0;
+  transition: background var(--duration-fast) var(--ease-standard),
+              border-color var(--duration-fast) var(--ease-standard);
+}
+
+.switch-thumb {
+  display: block;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--duration-normal) var(--ease-spring);
+}
+
+.switch-btn.is-checked {
+  background: var(--brand-grad);
+  border-color: transparent;
+}
+
+.switch-btn.is-checked .switch-thumb {
+  transform: translateX(20px);
+}
+
+.switch-btn[aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.9;
+}
+
+/* Stepper */
+.stepper-ctrl {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stepper-btn {
+  width: 36px;
+  height: 36px;
+  min-height: 36px;
+  min-width: 36px;
+  border-radius: 50%;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--duration-fast) var(--ease-standard);
+}
+
+.stepper-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.stepper-count-label {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--text);
+  min-width: 100px;
+  text-align: center;
+}
+
+.features-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+/* Feature Reason Toast */
+.feature-reason-toast {
+  position: fixed;
+  bottom: 84px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: #1E293B;
+  color: #FFFFFF;
+  padding: 10px 20px;
+  border-radius: var(--radius-full);
+  font-size: 0.875rem;
+  font-weight: 700;
+  box-shadow: var(--shadow-lg);
+  z-index: 200;
+  opacity: 0;
+  pointer-events: none;
+  transition: all var(--duration-fast) var(--ease-spring);
+}
+
+.feature-reason-toast.is-visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* 6G. Meter Card */
 .meter-card {
   background: var(--meter-bg);
   border: 1px solid var(--meter-edge);
@@ -284,6 +659,11 @@
   font-variant-numeric: tabular-nums;
   color: var(--meter-digit);
   text-shadow: 0 0 14px rgba(52, 211, 153, 0.45);
+  transition: text-shadow var(--duration-fast) var(--ease-standard);
+}
+
+.meter-live-digits.is-landing {
+  text-shadow: 0 0 24px rgba(52, 211, 153, 0.9);
 }
 
 .meter-currency {
@@ -346,7 +726,8 @@
   text-align: center;
   border-radius: var(--radius-full);
   min-height: 36px;
-  transition: color var(--duration-fast) var(--ease-standard);
+  transition: color var(--duration-fast) var(--ease-standard),
+              background var(--duration-fast) var(--ease-standard);
 }
 
 .tier-opt-btn.active {
@@ -357,4 +738,54 @@
 .meter-cta-btn {
   width: 100%;
   margin-top: 16px;
+}
+
+/* Fly Chip */
+.meter-fly-chip {
+  position: fixed;
+  z-index: 1000;
+  pointer-events: none;
+  background: var(--brand-grad);
+  color: #FFFFFF;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-md);
+  transform: translate(-50%, -50%);
+}
+
+/* Mobile Meter Bottom Sheet */
+.meter-sheet-dialog {
+  position: fixed;
+  inset: auto 0 0 0;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  border-radius: 24px 24px 0 0;
+  background: var(--meter-bg);
+  border: 1px solid var(--meter-edge);
+  color: #FFFFFF;
+  padding: 24px 20px calc(24px + env(safe-area-inset-bottom, 0px));
+  box-shadow: var(--shadow-meter);
+  z-index: 250;
+}
+
+.meter-sheet-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+}
+
+.meter-sheet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.meter-sheet-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #FFFFFF;
 }

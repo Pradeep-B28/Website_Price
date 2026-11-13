@@ -178,6 +178,37 @@
   animation: digitNudge 0.1s var(--ease-standard);
 }
 
+@keyframes flagFlip {
+  0% {
+    transform: rotateX(0deg);
+  }
+  50% {
+    transform: rotateX(90deg);
+    opacity: 0.5;
+  }
+  100% {
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+}
+
+.anim-flip {
+  animation: flagFlip 0.35s var(--ease-spring);
+}
+
+@keyframes rowFlash {
+  0% {
+    background-color: var(--brand-soft);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+.is-flashing {
+  animation: rowFlash 0.4s var(--ease-standard);
+}
+
 /* Page fade in when loader finishes */
 .page-loaded {
   opacity: 1;
