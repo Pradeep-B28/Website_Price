@@ -80,7 +80,7 @@
   height: 3px;
   background: var(--surface-2);
   transform: translateY(-50%);
-  z-index: 1;
+  z-index: 0;
 }
 
 .stepper-line-fill {
@@ -97,7 +97,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  background: var(--surface);
+  background-color: var(--surface);
   padding: 6px 14px;
   border-radius: var(--radius-full);
   border: 1px solid var(--border);
@@ -117,12 +117,15 @@
 .step-item.active {
   color: var(--brand-strong);
   border-color: var(--brand);
-  background: var(--brand-soft);
+  background-color: var(--surface);
+  background-image: linear-gradient(var(--brand-soft), var(--brand-soft));
 }
 
 .step-item.done {
   color: var(--text);
   border-color: var(--border);
+  background-color: var(--surface);
+  background-image: none;
 }
 
 .step-badge {
